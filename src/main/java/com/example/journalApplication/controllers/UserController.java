@@ -19,10 +19,7 @@ import java.util.*;
 public class UserController{
     @Autowired
     private UserService UserService;
-    @GetMapping
-    public List<User>getAllUsers(){
-        return UserService.getAll();
-    }
+
     @PostMapping
     public void CreateUser(@RequestBody User user){
         UserService.saveEntry(user);
