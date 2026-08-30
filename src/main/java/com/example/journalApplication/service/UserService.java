@@ -2,6 +2,8 @@ package com.example.journalApplication.service;
 import com.example.journalApplication.entity.User;
 import com.example.journalApplication.repository.userRepository;
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,10 +15,12 @@ import java.util.Optional;
 
 @Component
 public class UserService {
+    private final Logger Logger = LoggerFactory.getLogger(UserService.class);
     @Autowired
     private userRepository userRepository;
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     public void saveNewUser(User user) {
+        Logger.info("hahaha");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(Arrays.asList("USER"));
         userRepository.save(user);

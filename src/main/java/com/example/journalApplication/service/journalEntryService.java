@@ -3,6 +3,8 @@ import com.example.journalApplication.entity.User;
 import com.example.journalApplication.entity.journalEntry;
 import com.example.journalApplication.repository.journalRepository;
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,7 @@ public class journalEntryService {
     private journalRepository journalRepository;
     @Autowired
     private UserService UserService;
+
     @Transactional
     public void saveEntry(journalEntry journalEntry, String userName) {
         try{
@@ -27,7 +30,7 @@ public class journalEntryService {
             UserService.saveUser(user);
         }
         catch(Exception e){
-            System.out.println(e);
+
             throw new RuntimeException("An Error Occurred");
         }
     }
