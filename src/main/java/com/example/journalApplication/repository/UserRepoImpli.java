@@ -16,8 +16,8 @@ public class UserRepoImpli {
             query.addCriteria(Criteria.where("email").exists(true));
             query.addCriteria(Criteria.where("email").ne(null).ne(""));
             query.addCriteria(Criteria.where("sentimentAnalysis").is(true));
-            List<User> users= MongoTemplate.find(query, User.class);
-            return users;
+            return MongoTemplate.find(query, User.class);
+
 
         }
 }
